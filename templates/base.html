@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation-prototype.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous" />
+    <title>Inventory Management System</title>
+  </head>
+
+  <body>
+    <div class="top-bar nav padding-vertical-1" id="responsive-menu">
+      <div class="top-bar-left ">
+        <ul class="nav dropdown menu" data-dropdown-menu>
+          <li class="menu-text item">Inventory</li>
+          <li><a class="item" href="/">Home</a></li>
+          <li><a class="item"  href="/products">Products</a></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu nav">
+          <li><input class="rounded" id="query" type="search" placeholder="Search product name.." /></li>
+          <li><button id="btn-search" type="button" class="button rounded">Search</a></li>
+        </ul>
+      </div>
+    </div>
+
+    {%block body%} {%endblock%}
+
+
+
+    <footer class="footer">
+      <h4>Created By: Marque Sevadera </h4>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    <script>
+      
+      $(document).foundation();
+
+      $(document).ready(()=>{
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query');
+        $('#query').val(query)
+      })
+
+      $('#btn-search').click(()=>{
+        let q = $('#query').val();
+        if(q){
+          location.href = '/products?query=' + $('#query').val()
+        }else{
+          location.href = "/products"
+        }
+      })
+      
+    </script>
+  </body>
+</html>

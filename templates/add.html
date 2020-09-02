@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block body %}
+<div class="margin-3">
+  <h2 class="text-center">Add New Product</h2>
+  <div class="grid-x align-center">
+    <div class="card cell small-12 medium-8 large-6 padding-3">
+      <form data-abide novalidate action="/products/add" method="POST">
+        <div data-abide-error class="alert callout" style="display: none">
+          <p><i class="fi-alert"></i> There are some errors in your form.</p>
+        </div>
+
+        <div class="grid-x align-center">
+          <label class="cell small-11 medium-8">
+            Name:
+            <input type="text" name="name" placeholder="Enter Product Name" required />
+            <span class="form-error"> Product name is required! </span>
+          </label>
+        </div>
+
+        <div class="grid-x align-center">
+          <label class="cell small-11 medium-8">
+            Quantity:
+            <input type="text" name="quantity" placeholder="Enter Quantity" required pattern="integer" />
+            <span class="form-error"> Must be a valid integer! </span>
+          </label>
+        </div>
+
+        <div class="grid-x align-center">
+          <label class="cell small-11 medium-8">
+            Price:
+            <input prefix="$" type="text" name="price" placeholder="Enter Price" required pattern="number" />
+            <span class="form-error"> Must be a valid number! </span>
+          </label>
+        </div>
+
+        <div class="grid-x align-center">
+          <label class="cell small-11 medium-8">
+            Description:
+            <textarea name="description" id="description" placeholder="Enter Description"></textarea>
+          </label>
+        </div>
+
+        <div class="grid-x align-center">
+          <input type="submit" class="button rounded bordered success cell medium-8 large-4" value="Save" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

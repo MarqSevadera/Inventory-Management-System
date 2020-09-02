@@ -1,0 +1,35 @@
+{%extends 'base.html'%} {%block body%}
+<div class="margin-2">
+  <h2 class="text-center">Products</h2>
+  <a style="display: inline" class="button rounded success margin-vertical-2 float-right margin-right-1" href="/products/add">+ Add Product</a>
+  <table class="hover radius bordered shadow">
+    <thead>
+      <tr>
+        <th class="text-center" width="120">Id</th>
+        <th class="text-center" width="120">Name</th>
+        <th class="text-center" width="120">Quantity</th>
+        <th class="text-center" width="120">Price</th>
+        <th class="text-center" width="250">Description</th>
+        <th class="text-center" width="150">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for prod in products %}
+      <tr>
+        <td class="text-center">{{prod.id}}</td>
+        <td class="text-center">{{prod.name}}</td>
+        <td class="text-center">{{prod.quantity}}</td>
+        <td class="text-center">₱ {{prod.price}}</td>
+        <td class="text-center">{{prod.description}}</td>
+        <td class="text-center">
+          <a href="/products/{{prod.id}}" class="button rounded success">Edit</a>
+          <a href="/products/delete/{{prod.id}}" class="button rounded alert">Delete</a>
+        </td>
+      </tr>
+      {% else %}
+      <div>No Product Found</div>
+      {% endfor %}
+    </tbody>
+  </table>
+  {%endblock%}
+</div>
