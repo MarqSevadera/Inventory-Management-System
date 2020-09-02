@@ -24,7 +24,6 @@ def index():
 
 
 @app.route('/products', methods=['GET'])
-@app.route('/products')
 def products():
     query = request.args.get('query')
     if query is None: 
